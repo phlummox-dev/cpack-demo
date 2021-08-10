@@ -25,16 +25,27 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
-    - name: build and test
-      uses: lukka/run-cmake@v3
-      with:
-        cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
-        cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-        buildDirectory: '${{ runner.workspace }}/build'
-        buildWithCMakeArgs: "--target check"
-        
+    #- name: build and test
+    #  uses: lukka/run-cmake@v3
+    #  with:
+    #    cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
+    #    cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
+    #    buildDirectory: '${{ runner.workspace }}/build'
+    #    buildWithCMakeArgs: "--target check"
+
+    - name: Configure CMake
+      # Configure CMake in a 'build' subdirectory.
+      run: cmake -B ${{github.workspace}}/build
+
+
+    - name: Build
+      # Build your program with the given configuration
+      run: cmake --build ${{github.workspace}}/build
+
+
     - name: archive build output
       uses: actions/upload-artifact@v1
       with:
         name: packages
-        path: ${{ runner.workspace }}/build/source/
+        path: ${{ runner.workspace }}/build/
+
