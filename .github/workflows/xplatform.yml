@@ -46,6 +46,10 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build
 
+    - name: package
+      # Build your program with the given configuration
+      run: cmake --build ${{github.workspace}}/build --target package
+
 
     - name: archive build output
       uses: actions/upload-artifact@v1
