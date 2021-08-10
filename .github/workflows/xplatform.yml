@@ -1,12 +1,15 @@
 name: CI-build-and-test
 
-on: 
-  push:
-    # To run on all branches, but not 'master'.
-    branches:
-      -  '*'
-      - '!master'
-  pull_request:
+#on: 
+#  push:
+#    # To run on all branches, but not 'master'.
+#    branches:
+#      -  '*'
+#      - '!master'
+#  pull_request:
+on: [push]
+
+  
 jobs:
   build:
     name: CI-${{ matrix.os }}
