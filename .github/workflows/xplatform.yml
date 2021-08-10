@@ -50,6 +50,6 @@ jobs:
     - name: archive build output
       uses: actions/upload-artifact@v1
       with:
-        name: packages
+        name: arti-${{ matrix.os }}
         path: ${{ github.workspace }}/build/
 
