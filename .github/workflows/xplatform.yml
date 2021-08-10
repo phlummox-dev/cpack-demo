@@ -14,8 +14,8 @@ jobs:
   build:
     name: CI-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    env:
-      buildDir: '${{ github.workspace }}/build'
+    #env:
+    #  buildDir: '${{ github.workspace }}/build'
     
     strategy:
       fail-fast: false
@@ -51,5 +51,5 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: packages
-        path: ${{ runner.workspace }}/build/
+        path: ${{ github.workspace }}/build/
 
