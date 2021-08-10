@@ -14,6 +14,9 @@ jobs:
   build:
     name: CI-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    env:
+      buildDir: '${{ github.workspace }}/build'
+    
     strategy:
       fail-fast: false
       matrix:
@@ -21,14 +24,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    
     - name: build and test
-      uses: lukka/run-cmake@v0
+      uses: lukka/run-cmake@v3
       with:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
         buildDirectory: '${{ runner.workspace }}/build'
-        cmakeAppendedArgs: '-G "Ninja"'
         buildWithCMakeArgs: "--target check -- -j 0"
+        
     - name: archive build output
       uses: actions/upload-artifact@v1
       with:
