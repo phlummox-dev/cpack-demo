@@ -33,6 +33,10 @@ jobs:
     #    buildDirectory: '${{ runner.workspace }}/build'
     #    buildWithCMakeArgs: "--target check"
 
+    - name: make build dir
+      run: mkdir ${{github.workspace}}/build
+
+
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory.
       run: cmake -B ${{github.workspace}}/build
