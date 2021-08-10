@@ -55,5 +55,5 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: arti-${{ matrix.os }}
-        path: ${{ github.workspace }}/build/out/c*
+        path: ${{ github.workspace }}/build/out
 
