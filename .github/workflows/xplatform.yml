@@ -31,7 +31,7 @@ jobs:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
         buildDirectory: '${{ runner.workspace }}/build'
-        buildWithCMakeArgs: "--target check -- -j 0"
+        buildWithCMakeArgs: "--target check -- -j"
         
     - name: archive build output
       uses: actions/upload-artifact@v1
